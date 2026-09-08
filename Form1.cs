@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Calculator_Project
+namespace ListBoxProgram
 {
     public partial class Form1 : Form
     {
@@ -16,69 +16,31 @@ namespace Calculator_Project
             InitializeComponent();
         }
 
-        public void Calculator(string operation)
-        {
-            if (textBox1.Text == "" && textBox2.Text == "")
-            {
-                MessageBox.Show("Both Fields Are Empty");
-            }
-            else if (textBox1.Text == "" || textBox2.Text == "")
-            {
-                MessageBox.Show("One Of The Fields Is Empty");
-            }
-            else
-            {
-                int num1 = Convert.ToInt16(textBox1.Text);
-                int num2 = Convert.ToInt16(textBox2.Text);
-                int result = 0;
-
-                switch (operation)
-                {
-                    case "add":
-                        result = num1 + num2;
-                        break;
-                    case "sub":
-                        result = num1 - num2;
-                        break;
-                    case "mul":
-                        result = num1 * num2;
-                        break;
-                    case "div":
-                        if (num2 == 0)
-                        {
-                            MessageBox.Show("Division by zero is not allowed");
-                            return;
-                        }
-                        result = num1 / num2;
-                        break;
-                }
-
-                textBox3.Text = result.ToString();
-            }
-        }
-
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Calculator("add");
-
+            listBox1.Items.Add(textBox1.Text);
+            textBox1.Clear();
+            textBox1.Focus();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Calculator("sub");
+            MessageBox.Show(listBox1.Items.Count.ToString());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Calculator("mul");
+            listBox1.Sorted = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Calculator("div");
+            listBox1.Items.Clear();
         }
 
-       
+        private void button5_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Remove(listBox1.SelectedItem);
+        }
     }
 }
