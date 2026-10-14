@@ -1,0 +1,12 @@
+private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Enter Something");
+            }
+            else 
+            {
+                string name = textBox1.Text;
+                textBox2.Text = name;
+            }
+        }
